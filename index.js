@@ -7,7 +7,15 @@ class SortedList {
   add(item) {
     this.items.push(item);
     this.length = this.items.length;
-    this.items.sort();
+    this.items.sort((a, b) => {
+      if (a > b) {
+        return 1;
+      } else if (a < b) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   load(pos) {
@@ -40,6 +48,7 @@ class SortedList {
 
   avg() {
     const sum = this.items.reduce((a, b) => a + b, 0);
+
     if (this.items.length === 0) {
       throw new Error('EmptySortedList');
     } else {
